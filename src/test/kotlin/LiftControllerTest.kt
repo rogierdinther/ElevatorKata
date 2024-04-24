@@ -9,11 +9,9 @@ class LiftControllerTest {
 
     @Test
     fun `When the lift has no assignments, it stays on floor 1`() {
-        // Aanname: De lift begint op Verdieping 1
-
         controller.step()
         
-        assertEquals(0, liftSystem.numberOfCalls)
+        assertEquals(1, liftSystem.numberOfCalls)
     }
 
     @Test
@@ -21,7 +19,7 @@ class LiftControllerTest {
         controller.call(3, 6)
         controller.step()
 
-        assertEquals(listOf(3), liftSystem.calls)
+        assertEquals(listOf(1, 3), liftSystem.calls)
     }
 
     @Test
@@ -29,7 +27,7 @@ class LiftControllerTest {
         controller.call(3, 6)
         steps(2)
 
-        assertEquals(listOf(3, 6), liftSystem.calls)
+        assertEquals(listOf(1, 3, 6), liftSystem.calls)
     }
 
     @Test
@@ -37,7 +35,32 @@ class LiftControllerTest {
         controller.call(3, 6)
         steps(3)
 
-        assertEquals(listOf(3, 6, 1), liftSystem.calls)
+        assertEquals(listOf(1, 3, 6, 1), liftSystem.calls)
+    }
+
+    @Test
+    fun `When controller is initialized, lift is sent to floor 1`() {
+        assertEquals(listOf(1), liftSystem.calls)
+    }
+
+    @Test
+    fun `When the lift is called from two floors, the lift is sent to the nearest floor`() {
+        controller.call(3, 6)
+        controller.call(2, 6)
+
+        steps(1)
+
+        assertEquals(listOf(1, 2), liftSystem.calls)
+    }
+
+    @Test 
+    fun `When the lift is called twice from the same floor, that floor is visited only once`() {
+        controller.call(3, 6)
+        controller.call(3, 6)
+
+        steps(2)
+
+        assertEquals(listOf(1, 3, 6), liftSystem.calls)
     }
 
     private fun steps(n: Int) {
