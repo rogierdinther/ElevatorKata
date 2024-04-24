@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3417e5ad-3bae-4973-a6d9-8017220f4d96" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Elevator Kata.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/DummyTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/DummyTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2fUdSRAVGH9zvlQq2tTOA1rOSCY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
