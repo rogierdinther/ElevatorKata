@@ -32,6 +32,16 @@ class LiftTest {
         assertContentEquals(listOf(3, 6), liftSystem.calls)
     }
 
+    @Test
+    fun `When no other buttons are pressed after dropoff, lift returns to floor 1`() {
+        controller.call(3, 6)
+        controller.step()
+        controller.step()
+        controller.step()
+
+        assertContentEquals(listOf(3, 6, 1), liftSystem.calls)
+    }
+
     // @Test
     // fun `When there is one pickup and one dropoff, lift goes to the nearer pickup`() {
     //     val liftSystem = FakeLiftSystem()
