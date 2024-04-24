@@ -7,17 +7,19 @@ class LiftController(private val liftSystem: LiftSystem) {
 
     fun step() {
         if (floorsToGoTo.isNotEmpty()) {
-            liftSystem.gtf(floorsToGoTo.first())
-            currentFloor = floorsToGoTo.first()
-            
+            goToFloor(floorsToGoTo.first())
             floorsToGoTo.removeFirst()
         } else if (currentFloor != 1) {
-            liftSystem.gtf(1)
-            currentFloor = 1
+            goToFloor(1)
         }
     }
 
     fun call(floor: Int, destination: Int) {
         floorsToGoTo += listOf(floor, destination)
+    }
+
+    private fun goToFloor(floor: Int) {
+        liftSystem.gtf(floor)
+        currentFloor = floor
     }
 }
