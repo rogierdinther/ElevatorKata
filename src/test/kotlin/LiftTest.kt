@@ -26,8 +26,7 @@ class LiftTest {
     @Test
     fun `When no other buttons are pressed, lift delivers passenger to floor`() {
         controller.call(3, 6)
-        controller.step()
-        controller.step()
+        steps(2)
 
         assertContentEquals(listOf(3, 6), liftSystem.calls)
     }
@@ -35,9 +34,7 @@ class LiftTest {
     @Test
     fun `When no other buttons are pressed after dropoff, lift returns to floor 1`() {
         controller.call(3, 6)
-        controller.step()
-        controller.step()
-        controller.step()
+        steps(3)
 
         assertContentEquals(listOf(3, 6, 1), liftSystem.calls)
     }
@@ -54,6 +51,12 @@ class LiftTest {
 
     //     assertContentEquals(listOf(3, 2), liftSystem.calls)
     // }
+
+    private fun steps(n: Int) {
+        repeat(n) {
+            controller.step()
+        }
+    }
 
     class FakeLiftSystem : LiftSystem {
         var numberOfCalls: Int = 0
